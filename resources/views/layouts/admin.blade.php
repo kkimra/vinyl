@@ -8,6 +8,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href={{URL::asset('css/main.css')}} />
         <script src="https://use.fontawesome.com/0be01c127d.js"></script>
+        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     </head>
     <body>
       @include('header')
