@@ -3,9 +3,11 @@ namespace App\Http\Controllers;
 
 use App\author;
 use App\Vinyl;
-use Illuminate\Http\Request;
+use Request;
 use File;
 use Illuminate\Support\Facades\Input;
+use Response;
+use View;
 
 class VinylController extends Controller
 {
@@ -32,16 +34,22 @@ class VinylController extends Controller
       $file = Input::file('image');
       $file->move('uploads', $file->getClientOriginalName());
     }
-    return redirect()->route('index');
+    return redirect()->route('home');
    }
   public function getVinyl() {
-    $vinyls = Vinyl::paginate(6);
-    return view('index' , ['vinyls' => $vinyls]);
+    $vinyls = Vinyl::paginate(8);
+    if (Request::ajax()) {
+        return Response::json(View::make('vinyls-u', array('vinyls' => $vinyls))->render());
+    }
+     return view('index' , ['vinyls' => $vinyls]);
   }
 
   public function getVinylAdmin()
   {
-    $vinyls = Vinyl::paginate(6);
+    $vinyls = Vinyl::paginate(8);
+    if (Request::ajax()) {
+        return Response::json(View::make('vinyls', array('vinyls' => $vinyls))->render());
+    }
     return view('adminshow' , ['vinyls' => $vinyls]);
   }
 
@@ -78,7 +86,7 @@ class VinylController extends Controller
     }
     $vinyl->delete();
     File::delete('uploads/' . $image);
-    return redirect()->route('adminshow')->with(['success' => 'Post successfully deleted']);
+    return redirect()->route('home')->with(['success' => 'Post successfully deleted']);
   }
 public function getSingleVinyl($vinyl_id)
   {

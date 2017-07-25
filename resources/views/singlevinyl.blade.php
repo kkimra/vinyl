@@ -11,7 +11,7 @@
 @section('content')
 <div class="vinyl">
       <article class="vinyl-single">
-      <h3>{{$vinyl->name}}</h3>
+      <h2>{{$vinyl->name}}</h2>
       <img src="{{URL::asset('uploads/' . $vinyl->image)}}" />
       <br>
       <span class="info">{{$authors->author_id}}|{{$vinyl->created_at}}</span>
