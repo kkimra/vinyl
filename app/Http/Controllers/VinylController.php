@@ -3,16 +3,17 @@ namespace App\Http\Controllers;
 
 use App\author;
 use App\Vinyl;
-use Request;
 use File;
 use Illuminate\Support\Facades\Input;
 use Response;
 use View;
+use Illuminate\Http\Request;
 
 class VinylController extends Controller
 {
   public function postVinyl(Request $request)
   {
+
     $authorText = $request['author_id'];
     $authorinfo = $request['info'];
     $author = author::where('author_id', $authorText)->first();
@@ -38,7 +39,7 @@ class VinylController extends Controller
    }
   public function getVinyl() {
     $vinyls = Vinyl::paginate(8);
-    if (Request::ajax()) {
+    if (request()->ajax()) {
         return Response::json(View::make('vinyls-u', array('vinyls' => $vinyls))->render());
     }
      return view('index' , ['vinyls' => $vinyls]);
@@ -47,7 +48,7 @@ class VinylController extends Controller
   public function getVinylAdmin()
   {
     $vinyls = Vinyl::paginate(8);
-    if (Request::ajax()) {
+    if (request()->ajax()) {
         return Response::json(View::make('vinyls', array('vinyls' => $vinyls))->render());
     }
     return view('adminshow' , ['vinyls' => $vinyls]);
