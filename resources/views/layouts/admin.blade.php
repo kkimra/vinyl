@@ -13,6 +13,8 @@
         <link rel="stylesheet" type="text/css" href={{URL::asset('css/main.css')}} />
         <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
         <script src="https://use.fontawesome.com/0be01c127d.js"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector:'textarea' });</script>
         <script src="{{URL::asset('js/aj.js')}}" type="text/javascript"></script>
         <script type="text/javascript">
         $(function(){

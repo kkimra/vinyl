@@ -16,19 +16,10 @@ Route::get('/', [
  'as' => 'index'
 ]);
 
-// Route::get('/admin', function () {
-//     return view('adminpage');
-// })->name('admin');
-
-Route::post('/', [
-  'uses' => 'VinylController@postVinyl' ,
-  'as' => 'create'
-]);
-
-Route::get('/vinyl/{vinyl_id}/delete' , [
-      'uses' => 'VinylController@getDeleteVinyl' ,
-      'as' => 'admin.vinyl.delete'
-    ]);
+// Route::get('/vinyl/{vinyl_id}/delete' , [
+//       'uses' => 'VinylController@getDeleteVinyl' ,
+//       'as' => 'admin.vinyl.delete'
+//     ]);
 
 // Route::get('/adminshow', [
 //   'uses' => 'VinylController@getVinylAdmin',
